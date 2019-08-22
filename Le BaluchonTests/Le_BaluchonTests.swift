@@ -6,14 +6,35 @@
 //  Copyright © 2019 Darrieumerlou. All rights reserved.
 //
 
+//
+//  Le_BaluchonTests.swift
+//  Le BaluchonTests
+//
+//  Created by Darrieumerlou on 11/07/2019.
+//  Copyright © 2019 Darrieumerlou. All rights reserved.
+//
+
 import XCTest
 @testable import Le_Baluchon
 
 class Le_BaluchonTests: XCTestCase {
-
+    
+    func testGetWeatherData(){
+        let expectation = XCTestExpectation(description: "real weather")
+        let api = APIWeather()
+        api.run(query: "New York", success: { weather in
+            XCTAssert(true)
+            expectation.fulfill()
+        }) { error in
+            XCTAssert(false)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.00)
+    }
+    
     func testGetFakeWeatherData(){
         let expectation = XCTestExpectation(description: "fake weather")
-    let api = APIWeather()
+        let api = APIWeather()
         api.getFakeWeather(completionHandler: { (data, response, error) in
             print(data as Any)
             print(response as Any)
@@ -62,6 +83,18 @@ class Le_BaluchonTests: XCTestCase {
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetCurrencyData(){
+        let expectation = XCTestExpectation(description: "real currency")
+        APICurrency.run( success: { currency in
+            XCTAssert(true)
+            expectation.fulfill()
+        }) { error in
+            XCTAssert(false)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.00)
     }
     
     func testGetFakeCurrencyData(){
@@ -115,6 +148,18 @@ class Le_BaluchonTests: XCTestCase {
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetTranslateData(){
+        let expectation = XCTestExpectation(description: "real Translate")
+        APITranslate.run(query: "Bonjour", source: "fr" , target: "en", success: { translate in
+            XCTAssert(true)
+            expectation.fulfill()
+        }) { error in
+            XCTAssert(false)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.00)
     }
     
     func testGetFakeTranslateData(){
