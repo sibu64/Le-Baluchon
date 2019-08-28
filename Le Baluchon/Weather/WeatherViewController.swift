@@ -14,21 +14,18 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        mainView?.didActionFirstButton({
-            self.mainView?.firstLoader(animated: true)
-            self.load(name: "Pau", success: { model in
-                self.mainView?.firstLoader(animated: false)
-                self.mainView?.setFirst(model)
-            })
-        })
+        self.detectNetwork()
         
-        mainView?.didActionSecondButton({
-            self.mainView?.secondLoader(animated: true)
-            self.load(name: "New York", success: { model in
-                self.mainView?.secondLoader(animated: false)
-                self.mainView?.setSecond(model)
-            })
+        self.mainView?.firstLoader(animated: true)
+        self.load(name: "Pau", success: { model in
+            self.mainView?.firstLoader(animated: false)
+            self.mainView?.setFirst(model)
+        })
+    
+        self.mainView?.secondLoader(animated: true)
+        self.load(name: "New York", success: { model in
+            self.mainView?.secondLoader(animated: false)
+            self.mainView?.setSecond(model)
         })
     }
 

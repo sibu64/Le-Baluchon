@@ -13,6 +13,8 @@ class CurrencyViewController: UIViewController {
     // MARK: - Interface
     // ***********************************************
     @IBOutlet weak var mainView: CurrencyView?
+    // Properties
+    var fetcher = FetchCurrencyAPI()
     // ***********************************************
     // MARK: - Implementation
     // ***********************************************
@@ -20,7 +22,9 @@ class CurrencyViewController: UIViewController {
         super.viewDidLoad()
 
         mainView?.didCurrencyCallback({
-            self.load()
+            if self.fetcher.shouldFetch() == true {
+                self.load()
+            }
         })
     }
     // ***********************************************
@@ -31,6 +35,7 @@ class CurrencyViewController: UIViewController {
         APICurrency.run(success: { model in
             self.mainView?.loader(false)
             self.mainView?.set(model)
+            self.fetcher.save()
         }) { error in
             self.mainView?.loader(false)
             guard let err = error else { return }

@@ -16,6 +16,8 @@
 		6944012A22DF859200E71DC0 /* APICurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944012922DF859200E71DC0 /* APICurrency.swift */; };
 		698E162322DCE5CD007C645E /* UIAlertWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E162222DCE5CD007C645E /* UIAlertWrapper.swift */; };
 		698E162522DCE744007C645E /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E162422DCE744007C645E /* TranslateView.swift */; };
+		699F4666231590FD003BB0BB /* FetchCurrencyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F4665231590FD003BB0BB /* FetchCurrencyAPI.swift */; };
+		699F4668231595EE003BB0BB /* CheckNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F4667231595EE003BB0BB /* CheckNetwork.swift */; };
 		69A491E322EA0EBD003964B9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A491E222EA0EBD003964B9 /* WeatherViewController.swift */; };
 		69A491E522EA1182003964B9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A491E422EA1182003964B9 /* WeatherView.swift */; };
 		69B3365F22EF5A2600F8B0C6 /* Weather+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3365E22EF5A2600F8B0C6 /* Weather+Helper.swift */; };
@@ -72,6 +74,8 @@
 		6944012922DF859200E71DC0 /* APICurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICurrency.swift; sourceTree = "<group>"; };
 		698E162222DCE5CD007C645E /* UIAlertWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertWrapper.swift; sourceTree = "<group>"; };
 		698E162422DCE744007C645E /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		699F4665231590FD003BB0BB /* FetchCurrencyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCurrencyAPI.swift; sourceTree = "<group>"; };
+		699F4667231595EE003BB0BB /* CheckNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetwork.swift; sourceTree = "<group>"; };
 		69A491E222EA0EBD003964B9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		69A491E422EA1182003964B9 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		69B3365E22EF5A2600F8B0C6 /* Weather+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weather+Helper.swift"; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 			children = (
 				6944012922DF859200E71DC0 /* APICurrency.swift */,
 				6911D61722E7648C001D3A66 /* Currency+Helper.swift */,
+				699F4665231590FD003BB0BB /* FetchCurrencyAPI.swift */,
 				6911D61322E75C17001D3A66 /* CurrencyViewController.swift */,
 				6911D61122E75BF0001D3A66 /* CurrencyView.swift */,
 			);
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				6EB1EF7D22D79AE300954056 /* Le Baluchon */,
+				6EB1EF8522D79AE500954056 /* Assets.xcassets */,
 				6EB1EF9222D79AE500954056 /* Le BaluchonTests */,
 				6EB1EF7C22D79AE300954056 /* Products */,
 				E989644FFAAE1FF82C411C88 /* Pods */,
@@ -207,10 +213,10 @@
 				6911D61022E75A63001D3A66 /* Utilities */,
 				6911D60C22E75A20001D3A66 /* Translate */,
 				6911D60F22E75A3B001D3A66 /* Currency */,
-				6EB1EF8522D79AE500954056 /* Assets.xcassets */,
 				6E6BBD1422DB68E200C31FA9 /* iconfinder_OUTLINE_Bussiness_and_Media-04_4041197.svg */,
 				6EB1EF8722D79AE500954056 /* LaunchScreen.storyboard */,
 				6EB1EF8A22D79AE500954056 /* Info.plist */,
+				699F4667231595EE003BB0BB /* CheckNetwork.swift */,
 			);
 			path = "Le Baluchon";
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				6E59A6B822D8AD8C00E033B3 /* Constantes.swift in Sources */,
 				6911D61222E75BF0001D3A66 /* CurrencyView.swift in Sources */,
 				6EE3518022E88321008AFE5D /* APIWeather.swift in Sources */,
+				699F4668231595EE003BB0BB /* CheckNetwork.swift in Sources */,
 				6944012A22DF859200E71DC0 /* APICurrency.swift in Sources */,
 				69A491E322EA0EBD003964B9 /* WeatherViewController.swift in Sources */,
 				69A491E522EA1182003964B9 /* WeatherView.swift in Sources */,
@@ -440,6 +447,7 @@
 				6EB1EF7F22D79AE300954056 /* AppDelegate.swift in Sources */,
 				69B3365F22EF5A2600F8B0C6 /* Weather+Helper.swift in Sources */,
 				6911D61822E7648C001D3A66 /* Currency+Helper.swift in Sources */,
+				699F4666231590FD003BB0BB /* FetchCurrencyAPI.swift in Sources */,
 				698E162522DCE744007C645E /* TranslateView.swift in Sources */,
 				6EC968B322DF502700C22E78 /* APITranslate.swift in Sources */,
 				6E8842112301A28C0063642B /* URLSessionFake.swift in Sources */,

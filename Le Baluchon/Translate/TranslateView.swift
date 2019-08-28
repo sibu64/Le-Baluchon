@@ -59,7 +59,9 @@ class TranslateView: UIView {
     // MARK: - Actions
     // ***********************************************
     @IBAction func actionTranslate(sender: UIButton) {
-        self.actionTranslate()
+        if sourceField?.text?.isEmpty == false {
+            self.actionTranslate()
+        }
     }
     
     @IBAction func actionRemoveKeyboard(sender: UITapGestureRecognizer) {
