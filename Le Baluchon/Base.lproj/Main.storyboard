@@ -30,23 +30,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Insérer une phrase ou un mot" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Gsr-en-yxA">
-                                                <rect key="frame" x="8" y="34" width="288" height="43"/>
-                                                <nil key="textColor"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-Cv-dtx">
+                                                <rect key="frame" x="4" y="34" width="296" height="43"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
-                                            </textField>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Gsr-en-yxA" secondAttribute="trailing" constant="8" id="2ka-91-42o"/>
+                                            <constraint firstAttribute="bottom" secondItem="S5U-Cv-dtx" secondAttribute="bottom" constant="8" id="GAo-tc-vBF"/>
                                             <constraint firstItem="jWD-Ss-99b" firstAttribute="top" secondItem="7BA-3X-j3X" secondAttribute="top" constant="8" id="GFO-FN-B5c"/>
-                                            <constraint firstItem="Gsr-en-yxA" firstAttribute="top" secondItem="jWD-Ss-99b" secondAttribute="bottom" constant="8" id="LC0-jI-jgC"/>
                                             <constraint firstAttribute="height" constant="85" id="LiL-xh-prU"/>
-                                            <constraint firstItem="Gsr-en-yxA" firstAttribute="leading" secondItem="7BA-3X-j3X" secondAttribute="leading" constant="8" id="O8O-GP-cgu"/>
+                                            <constraint firstItem="S5U-Cv-dtx" firstAttribute="top" secondItem="jWD-Ss-99b" secondAttribute="bottom" constant="8" id="Oak-WS-B3q"/>
                                             <constraint firstAttribute="trailing" secondItem="jWD-Ss-99b" secondAttribute="trailing" constant="8" id="PWt-yE-e8O"/>
-                                            <constraint firstAttribute="bottom" secondItem="Gsr-en-yxA" secondAttribute="bottom" constant="8" id="gXO-Hl-10e"/>
                                             <constraint firstItem="jWD-Ss-99b" firstAttribute="leading" secondItem="7BA-3X-j3X" secondAttribute="leading" constant="8" id="kGz-HS-jGn"/>
+                                            <constraint firstItem="S5U-Cv-dtx" firstAttribute="leading" secondItem="7BA-3X-j3X" secondAttribute="leading" constant="4" id="nzA-g8-sP5"/>
+                                            <constraint firstAttribute="trailing" secondItem="S5U-Cv-dtx" secondAttribute="trailing" constant="4" id="r09-D2-Gvb"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYQ-38-Ksb">
@@ -122,7 +122,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
                             <outlet property="loader" destination="WC3-mJ-iT9" id="mp0-Yu-qA8"/>
-                            <outlet property="sourceField" destination="Gsr-en-yxA" id="HjA-6q-xqT"/>
+                            <outlet property="sourceField" destination="S5U-Cv-dtx" id="6qZ-Rl-eZ9"/>
                             <outlet property="targetLabel" destination="ekw-XC-kOg" id="Qji-W5-eS4"/>
                             <outlet property="translateButton" destination="hYQ-38-Ksb" id="Oy0-U9-TON"/>
                             <outletCollection property="gestureRecognizers" destination="3tv-zj-d5R" appends="YES" id="azz-pj-Mqd"/>
@@ -140,7 +140,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="592.63392857142856"/>
+            <point key="canvasLocation" x="1837.5" y="592.5"/>
         </scene>
         <!--Devises-->
         <scene sceneID="TFZ-Ye-xcf">
@@ -430,12 +430,12 @@
         <scene sceneID="AFz-wx-gEy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KeO-hz-bp1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Traduction" image="AppIcon" id="tkA-Km-Zn7">
+                    <tabBarItem key="tabBarItem" tag="2" title="Traduction" image="translate_tabbar" selectedImage="translate_tabbar" id="tkA-Km-Zn7">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eAM-Rz-8Rn">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -472,10 +472,10 @@
         <scene sceneID="j2K-Wb-13s">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DJA-ON-3TZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Météo" selectedImage="AppIcon_weather" id="xKF-xd-VV2"/>
+                    <tabBarItem key="tabBarItem" title="Météo" image="weather_tabbar" selectedImage="weather_tabbar" id="xKF-xd-VV2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z7a-dZ-iOa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -489,7 +489,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon" width="16" height="16"/>
-        <image name="AppIcon_weather" width="16" height="16"/>
+        <image name="translate_tabbar" width="29" height="29"/>
+        <image name="weather_tabbar" width="14.5" height="14.5"/>
     </resources>
 </document>

@@ -12,7 +12,7 @@ class TranslateView: UIView {
     // ***********************************************
     // MARK: - Interface
     // ***********************************************
-    @IBOutlet weak var sourceField: UITextField?
+    @IBOutlet weak var sourceField: UITextView?
     @IBOutlet weak var targetLabel: UILabel?
     @IBOutlet weak var translateButton: UIButton?
     @IBOutlet weak var loader: UIActivityIndicatorView?
@@ -25,7 +25,8 @@ class TranslateView: UIView {
         super.awakeFromNib()
         translateButton?.layer.cornerRadius = 8.0
         sourceField?.delegate = self
-        sourceField?.becomeFirstResponder()
+        sourceField?.text = "Insérer une phrase ou un mot"
+        sourceField?.textColor = UIColor.lightGray
     }
     
     func hideKeyboard() {
@@ -69,10 +70,18 @@ class TranslateView: UIView {
     }
 }
 
-extension TranslateView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.actionTranslate()
-        return true
+extension TranslateView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if sourceField?.textColor == UIColor.lightGray {
+            sourceField?.text = ""
+            sourceField?.textColor = UIColor.black
+        }
     }
-
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if sourceField?.text == "" {
+            sourceField?.text = "Insérer une phrase ou un mot"
+            sourceField?.textColor = UIColor.lightGray
+        }
+    }
 }

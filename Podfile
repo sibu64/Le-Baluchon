@@ -6,14 +6,9 @@ target 'Le Baluchon' do
   use_frameworks!
 
   # Pods for Le Baluchon
-  pod 'SwiftGoogleTranslate'
+  # pod 'SwiftGoogleTranslate'
 
   target 'Le BaluchonTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'Le BaluchonUITests' do
     inherit! :search_paths
     # Pods for testing
   end

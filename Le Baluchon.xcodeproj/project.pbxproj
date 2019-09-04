@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		6911D61422E75C17001D3A66 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6911D61322E75C17001D3A66 /* CurrencyViewController.swift */; };
 		6911D61822E7648C001D3A66 /* Currency+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6911D61722E7648C001D3A66 /* Currency+Helper.swift */; };
 		6944012A22DF859200E71DC0 /* APICurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944012922DF859200E71DC0 /* APICurrency.swift */; };
+		698AFEE7231D7A17002688E7 /* WeatherAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698AFEE6231D7A17002688E7 /* WeatherAPI_Tests.swift */; };
+		698AFEE9231D7A74002688E7 /* CurrencyAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698AFEE8231D7A74002688E7 /* CurrencyAPI_Tests.swift */; };
+		698AFEEB231D7A97002688E7 /* TranslateAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698AFEEA231D7A97002688E7 /* TranslateAPI_Tests.swift */; };
 		698E162322DCE5CD007C645E /* UIAlertWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E162222DCE5CD007C645E /* UIAlertWrapper.swift */; };
 		698E162522DCE744007C645E /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E162422DCE744007C645E /* TranslateView.swift */; };
 		699F4666231590FD003BB0BB /* FetchCurrencyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F4665231590FD003BB0BB /* FetchCurrencyAPI.swift */; };
@@ -41,7 +44,6 @@
 		6EB1EF8422D79AE300954056 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EB1EF8222D79AE300954056 /* Main.storyboard */; };
 		6EB1EF8622D79AE500954056 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EB1EF8522D79AE500954056 /* Assets.xcassets */; };
 		6EB1EF8922D79AE500954056 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EB1EF8722D79AE500954056 /* LaunchScreen.storyboard */; };
-		6EB1EF9422D79AE500954056 /* Le_BaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB1EF9322D79AE500954056 /* Le_BaluchonTests.swift */; };
 		6EBDD7B8230DBD50005FF6F6 /* TranslateFakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E279800230B2299004F6CBA /* TranslateFakeResponseData.swift */; };
 		6EBDD7BA230DC547005FF6F6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6EBDD7B9230DC547005FF6F6 /* .gitignore */; };
 		6EC63E0F22FB10900064903E /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EC63E0E22FB10900064903E /* Weather.json */; };
@@ -72,6 +74,9 @@
 		6911D61322E75C17001D3A66 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		6911D61722E7648C001D3A66 /* Currency+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency+Helper.swift"; sourceTree = "<group>"; };
 		6944012922DF859200E71DC0 /* APICurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICurrency.swift; sourceTree = "<group>"; };
+		698AFEE6231D7A17002688E7 /* WeatherAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI_Tests.swift; sourceTree = "<group>"; };
+		698AFEE8231D7A74002688E7 /* CurrencyAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPI_Tests.swift; sourceTree = "<group>"; };
+		698AFEEA231D7A97002688E7 /* TranslateAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateAPI_Tests.swift; sourceTree = "<group>"; };
 		698E162222DCE5CD007C645E /* UIAlertWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertWrapper.swift; sourceTree = "<group>"; };
 		698E162422DCE744007C645E /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
 		699F4665231590FD003BB0BB /* FetchCurrencyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCurrencyAPI.swift; sourceTree = "<group>"; };
@@ -98,7 +103,6 @@
 		6EB1EF8822D79AE500954056 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EB1EF8A22D79AE500954056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EB1EF8F22D79AE500954056 /* Le BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6EB1EF9322D79AE500954056 /* Le_BaluchonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonTests.swift; sourceTree = "<group>"; };
 		6EB1EF9522D79AE500954056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EBDD7B9230DC547005FF6F6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		6EC63E0E22FB10900064903E /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
@@ -224,7 +228,9 @@
 		6EB1EF9222D79AE500954056 /* Le BaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
-				6EB1EF9322D79AE500954056 /* Le_BaluchonTests.swift */,
+				698AFEE8231D7A74002688E7 /* CurrencyAPI_Tests.swift */,
+				698AFEE6231D7A17002688E7 /* WeatherAPI_Tests.swift */,
+				698AFEEA231D7A97002688E7 /* TranslateAPI_Tests.swift */,
 				6EB1EF9522D79AE500954056 /* Info.plist */,
 				6EBDD7B6230DBCF3005FF6F6 /* Mocks */,
 				6EBDD7B7230DBD44005FF6F6 /* Network */,
@@ -280,7 +286,6 @@
 				6EB1EF7722D79AE300954056 /* Sources */,
 				6EB1EF7822D79AE300954056 /* Frameworks */,
 				6EB1EF7922D79AE300954056 /* Resources */,
-				D413BC6DC7E2216420A75AD1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -409,23 +414,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D413BC6DC7E2216420A75AD1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Le Baluchon/Pods-Le Baluchon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Le Baluchon/Pods-Le Baluchon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Le Baluchon/Pods-Le Baluchon-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -460,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E279801230B2299004F6CBA /* TranslateFakeResponseData.swift in Sources */,
-				6EB1EF9422D79AE500954056 /* Le_BaluchonTests.swift in Sources */,
 				6E2797FF230B1FD6004F6CBA /* APIWeather+Extension.swift in Sources */,
 				6E2797FD230B1F42004F6CBA /* APICurrency.swift in Sources */,
 				6E2797FC230B1F03004F6CBA /* APICurrency+Extension.swift in Sources */,
@@ -470,10 +457,13 @@
 				6EC968B422DF502700C22E78 /* APITranslate.swift in Sources */,
 				6E20623022EDC1810043D73A /* TranslateView.swift in Sources */,
 				6E1E03EC22FC76AB00F3C85A /* WeatherFakeResponseData.swift in Sources */,
+				698AFEE9231D7A74002688E7 /* CurrencyAPI_Tests.swift in Sources */,
 				6EE9B9E722FDE42E00E95E52 /* UIAlertWrapper.swift in Sources */,
 				6E279803230B23B2004F6CBA /* APITranslate+Extension.swift in Sources */,
+				698AFEE7231D7A17002688E7 /* WeatherAPI_Tests.swift in Sources */,
 				6E8842122301A28C0063642B /* URLSessionFake.swift in Sources */,
 				6E20622E22EDC1320043D73A /* Constantes.swift in Sources */,
+				698AFEEB231D7A97002688E7 /* TranslateAPI_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 251DE98644D474391A9D16AF /* Pods-Le Baluchon.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QDN94WAYA;
 				INFOPLIST_FILE = "Le Baluchon/Info.plist";
@@ -645,6 +636,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7351AEC4668F694C9F9150C6 /* Pods-Le Baluchon.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QDN94WAYA;
 				INFOPLIST_FILE = "Le Baluchon/Info.plist";
