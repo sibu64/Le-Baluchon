@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Weather: Decodable {
-    struct Main: Decodable {
+public struct Weather: Decodable {
+    public struct Main: Decodable {
         public let temp: Double
     }
     
-    struct WeatherValue: Decodable {
+    public struct WeatherValue: Decodable {
         public let id: Int
     }
     

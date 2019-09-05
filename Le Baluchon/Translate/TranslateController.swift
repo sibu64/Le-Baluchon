@@ -16,13 +16,25 @@ class TranslateController: UIViewController {
     // ***********************************************
     // MARK: - Implementation
     // ***********************************************
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUp()
         
+    }
+    // ***********************************************
+    // MARK: - Private Methods
+    // ***********************************************
+    private func translate(query: String, from: String, to: String, completion: ((GoogleTranslateResponse)->Void)?) {
+        self.mainView?.loader(true)
+        APITranslate.run(query: query, source: from, target: to, success: { model in
+            self.sucess(model: model, completion: completion)
+        }, failure: { error in
+            self.error(error: error)
+        })
+    }
+    
+    public func setUp(){
         mainView?.didTranslate({ source in
             guard let value = source else { return }
             self.translate(query: value, from: "fr", to: "en", completion: { model in
@@ -31,23 +43,20 @@ class TranslateController: UIViewController {
             })
         })
     }
-    // ***********************************************
-    // MARK: - Private Methods
-    // ***********************************************
-    private func translate(query: String, from: String, to: String, completion: ((GoogleTranslateResponse)->Void)?) {
-        self.mainView?.loader(true)
-        APITranslate.run(query: query, source: from, target: to, success: { model in
-            self.mainView?.loader(false)
-            completion?(model)
-        }, failure: { error in
-            self.mainView?.loader(false)
-            guard let err = error else { return }
-            UIAlertWrapper.presentAlert(
-                title: "Erreur",
-                message: err.localizedDescription,
-                cancelButtonTitle: "Ok"
-            )
-        })
+    
+    public func sucess(model: GoogleTranslateResponse,completion: ((GoogleTranslateResponse)->Void)?){
+        self.mainView?.loader(false)
+        completion?(model)
+    }
+    
+    public func error(error: Error?){
+        self.mainView?.loader(false)
+        guard let err = error else { return }
+        UIAlertWrapper.presentAlert(
+            title: "Erreur",
+            message: err.localizedDescription,
+            cancelButtonTitle: "Ok"
+        )
     }
 
 }

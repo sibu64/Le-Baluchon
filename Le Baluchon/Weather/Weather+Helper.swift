@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Weather {
-    func imageToWeather() ->String {
+public extension Weather {
+     func imageToWeather() ->String {
         switch (weather.first!.id) {
             case 0...300: return "tstorm1"
             case 301...500: return "light_rain"

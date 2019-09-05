@@ -12,8 +12,8 @@ class WeatherView: UIView {
     // ***********************************************
     // MARK: - Interface
     // ***********************************************
-    @IBOutlet weak private var firstTemperatureView: TemperatureView?
-    @IBOutlet weak private var secondTemperatureView: TemperatureView?
+    @IBOutlet weak public var firstTemperatureView: TemperatureView?
+    @IBOutlet weak public var secondTemperatureView: TemperatureView?
     @IBOutlet weak private var firstLoader: UIActivityIndicatorView?
     @IBOutlet weak private var secondLoader: UIActivityIndicatorView?
     // ***********************************************
@@ -21,7 +21,6 @@ class WeatherView: UIView {
     // ***********************************************
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
     
     func setFirst(_ weather: Weather) {

@@ -20,12 +20,7 @@ class CurrencyViewController: UIViewController {
     // ***********************************************
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        mainView?.didCurrencyCallback({
-            if self.fetcher.shouldFetch() == true {
-                self.load()
-            }
-        })
+        self.setUp()
     }
     // ***********************************************
     // MARK: - Private Methods
@@ -33,18 +28,35 @@ class CurrencyViewController: UIViewController {
     private func load() {
         mainView?.loader(true)
         APICurrency.run(success: { model in
-            self.mainView?.loader(false)
-            self.mainView?.set(model)
-            self.fetcher.save()
+           self.success(model: model)
         }) { error in
-            self.mainView?.loader(false)
-            guard let err = error else { return }
-            UIAlertWrapper.presentAlert(
-                title: "Erreur",
-                message: err.localizedDescription,
-                cancelButtonTitle: "Ok"
-            )
+          self.error(error: error)
         }
+    }
+    
+    public func setUp(){
+        mainView?.didCurrencyCallback({
+            if self.fetcher.shouldFetch() == true {
+                self.load()
+            }
+        })
+
+    }
+    
+    public func success(model: Currency){
+        self.mainView?.loader(false)
+        self.mainView?.set(model)
+        self.fetcher.save()
+    }
+    
+    public func error(error: Error?){
+        self.mainView?.loader(false)
+        guard let err = error else { return }
+        UIAlertWrapper.presentAlert(
+            title: "Erreur",
+            message: err.localizedDescription,
+            cancelButtonTitle: "Ok"
+        )
     }
 }
 
