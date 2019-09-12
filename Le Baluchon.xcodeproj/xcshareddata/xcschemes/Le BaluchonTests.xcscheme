@@ -24,6 +24,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6EB1EF7A22D79AE300954056"
+            BuildableName = "Le Baluchon.app"
+            BlueprintName = "Le Baluchon"
+            ReferencedContainer = "container:Le Baluchon.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

@@ -51,6 +51,7 @@ class TranslateController: UIViewController {
     
     public func error(error: Error?){
         self.mainView?.loader(false)
+        self.mainView?.targetLabel?.text = "error"
         guard let err = error else { return }
         UIAlertWrapper.presentAlert(
             title: "Erreur",

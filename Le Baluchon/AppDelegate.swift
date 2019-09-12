@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
     
-//        var fixerAPIKey: String = "http://data.fixer.io/api/latest? access_key = 6d7719c7c18c4bac22c93fae44f9c4b5"
         return true
     }
 

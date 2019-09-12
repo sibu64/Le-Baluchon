@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct Currency {
-    struct Rates: Decodable {
-        let USD: Double
-    }
-    
-    let base: String
-    let dateString: String
-    let rates: Rates?
-}
+//struct Currency {
+//    struct Rates: Decodable {
+//        let USD: Double
+//    }
+//
+//    let base: String
+//    let dateString: String
+//    let rates: Rates?
+//}
 
 extension Currency: Decodable {
     enum CurrencyKeys: String, CodingKey {

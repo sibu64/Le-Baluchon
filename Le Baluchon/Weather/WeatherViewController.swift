@@ -42,6 +42,7 @@ class WeatherViewController: UIViewController {
     func error(error: Error?){
         self.mainView?.firstLoader(animated: false)
         self.mainView?.secondLoader(animated: false)
+        self.mainView?.firstTemperatureView?.temperatureLabel?.text = "error"
         guard let err = error else { return }
         UIAlertWrapper.presentAlert(
             title: "Erreur",

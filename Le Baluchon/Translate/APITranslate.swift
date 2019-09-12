@@ -68,15 +68,15 @@ class APITranslate {
     }
 }
 
-struct GoogleTranslateResponse: Decodable {
-    public let data: Data?
-}
-
-struct Data: Decodable {
-    let translations: [Translation]?
-}
-
-struct Translation: Decodable {
-    let translatedText: String
-}
+//struct GoogleTranslateResponse: Decodable {
+//    public let data: Data?
+//}
+//
+//struct Data: Decodable {
+//    let translations: [Translation]?
+//}
+//
+//struct Translation: Decodable {
+//    let translatedText: String
+//}
 
