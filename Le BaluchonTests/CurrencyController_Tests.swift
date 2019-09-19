@@ -8,51 +8,89 @@
 
 import Foundation
 import XCTest
-
 @testable import Le_Baluchon
 
 class CurrencyViewControllerTests: XCTestCase {
-    var controller: CurrencyViewController = CurrencyViewController()
-    var mainView: CurrencyView = CurrencyView()
-    var label: UILabel = UILabel()
     
-    //given: the user open the curencyViewCOntroller
+    var mainView = CurrencyView()
+    
     override func setUp() {
-        controller.mainView = self.mainView
-        controller.mainView?.usdLabel = self.label
-        controller.fetcher.save(with: Date(timeIntervalSince1970:
-            1536082364))
+        super.setUp()
+
     }
     
     override func tearDown() {
-    }
-    //when: click on the UIBUtton to get the currency
-    func testViewControllerRun() {
-        let expectation = XCTestExpectation(description: "fake currency")
-        self.controller.setUp()
-       
-        controller.mainView?.actionCurrency(sender: UIButton())
-        DispatchQueue.main.asyncAfter(deadline: .now()+10.00, execute:{
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.00)
-        resultTest()
-    }
-    
-    func testViewControllerError(){
-        self.controller.error(error: CurrencyFakeResponseData.CurrencyError())
-        XCTAssert(self.controller.mainView?.usdLabel?.text == "error")
-    }
-    
-    func testHelper(){
-        let test: Double = 42.00
-        print(test.usdFormat as Any)
-    }
-    
-    //then: He should see the currency rate
-    func resultTest(){
-       XCTAssertNotNil(mainView.usdLabel?.text)
-       XCTAssertNotEqual(0, mainView.usdLabel?.text?.count ?? 0)
+        super.tearDown()
         
+    }
+    
+    func test_api_currency_call_success() {
+        let fakeController = CurrencyViewControllerSuccess()
+        fakeController.mainView = mainView
+        fakeController.api = MockAPICurrencySuccess()
+        fakeController.fetcher = MockFetcherAPICurrency(fetch: true)
+        
+        fakeController.viewDidLoad()
+        fakeController.mainView?.actionCurrency(sender: UIButton())
+        
+        XCTAssertEqual(fakeController.model, Currency.fake)
+    }
+    
+    func test_api_currency_call_failure() {
+        let fakeController = CurrencyViewControllerFailure()
+        fakeController.mainView = mainView
+        fakeController.api = MockAPICurrencyFailure()
+        fakeController.fetcher = MockFetcherAPICurrency(fetch: true)
+        
+        fakeController.viewDidLoad()
+        fakeController.mainView?.actionCurrency(sender: UIButton())
+        
+        let error = fakeController.error!
+        XCTAssertEqual((error as NSError).domain, "domain.com")
+        XCTAssertEqual((error as NSError).code, 400)
+    }
+}
+
+class CurrencyViewControllerSuccess: CurrencyViewController {
+    private(set) var model: Currency?
+    override func success(model: Currency) {
+        self.model = model
+    }
+}
+
+class CurrencyViewControllerFailure: CurrencyViewController {
+    private(set) var error: Error?
+    override func error(error: Error?) {
+        self.error = error
+    }
+}
+
+extension Currency {
+    static var fake: Currency {
+        let data = CurrencyFakeResponseData().currencyCorrectData
+        return try! JSONDecoder().decode(Currency.self, from: data!)
+    }
+}
+
+class MockAPICurrencySuccess: APICurrency {
+    override func run(success: ((Currency) -> Void)?, failure: ((Error?) -> Void)?) {
+        success?(Currency.fake)
+    }
+}
+
+class MockAPICurrencyFailure: APICurrency {
+    override func run(success: ((Currency) -> Void)?, failure: ((Error?) -> Void)?) {
+        failure?(NSError(domain: "domain.com", code: 400, userInfo: nil))
+    }
+}
+
+class MockFetcherAPICurrency: FetchCurrencyAPI {
+    private(set) var fetch: Bool
+    init(fetch: Bool) {
+        self.fetch = fetch
+    }
+    
+    override func shouldFetch() -> Bool {
+        return fetch
     }
 }

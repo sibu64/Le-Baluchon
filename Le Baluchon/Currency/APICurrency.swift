@@ -38,9 +38,7 @@ class APICurrency {
     var session = URLSession(configuration: .default)
     var apiCurrency = APICurrency.shared
     
-    
-    
-    static func run(success: ((Currency)->Void)?, failure: ((Error?)->Void)?) {
+    func run(success: ((Currency)->Void)?, failure: ((Error?)->Void)?) {
         let session = URLSession(configuration: .default)
         let request = buildRequest()
         session.dataTask(with: request) { data, response, error in
@@ -71,7 +69,7 @@ class APICurrency {
     // ***********************************************
     // MARK: - Private Methods
     // ***********************************************
-    static internal func buildRequest() ->URLRequest {
+    internal func buildRequest() ->URLRequest {
         let urlString = "http://data.fixer.io/api/latest?access_key=6d7719c7c18c4bac22c93fae44f9c4b5&base=EUR&symbols=USD"
         
         var urlRequest = URLRequest(url: URL(string: urlString)!)

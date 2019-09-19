@@ -13,7 +13,7 @@
         <!--Traduction-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TranslateController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="translateViewController" id="BYZ-38-t0r" customClass="TranslateController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="TranslateView" customModule="Le_Baluchon" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
         <!--Devises-->
         <scene sceneID="TFZ-Ye-xcf">
             <objects>
-                <viewController id="Kjo-PM-bH3" customClass="CurrencyViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="currencyViewController" id="Kjo-PM-bH3" customClass="CurrencyViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FVa-dM-wn1" customClass="CurrencyView" customModule="Le_Baluchon" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +258,7 @@
         <!--Météo-->
         <scene sceneID="BiD-id-BQq">
             <objects>
-                <viewController id="E9x-hN-GIr" customClass="WeatherViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="weatherViewController" id="E9x-hN-GIr" customClass="WeatherViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bqo-Er-qNV" customClass="WeatherView" customModule="Le_Baluchon" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

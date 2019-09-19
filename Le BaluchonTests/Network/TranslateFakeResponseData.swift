@@ -10,7 +10,7 @@ import Foundation
 
 class TranslateFakeResponseData {
     // MARK: - Data
-    var weatherCorrectData: Foundation.Data? {
+    var translateCorrectData: Foundation.Data? {
         let bundle = Bundle(for: type(of: self))
         
          let url = bundle.url(forResource: "Translate", withExtension: "json")

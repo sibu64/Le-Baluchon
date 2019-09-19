@@ -8,55 +8,78 @@
 
 import Foundation
 import XCTest
-
 @testable import Le_Baluchon
 
 class WeatherViewControllerTests: XCTestCase {
-    var controller: WeatherViewController = WeatherViewController()
-    var mainView: WeatherView = WeatherView()
-    var temperatureView: TemperatureView = TemperatureView()
-    var label: UILabel = UILabel()
+    
+    var controller: WeatherViewController!
     
     override func setUp() {
-        controller.mainView = self.mainView
-        self.temperatureView.temperatureLabel = self.label
-        controller.mainView?.firstTemperatureView = self.temperatureView
-        controller.mainView?.secondTemperatureView = self.temperatureView
+        super.setUp()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController: WeatherViewController = storyboard.instantiateViewController(withIdentifier: "weatherViewController") as! WeatherViewController
+        self.controller = viewController
+        //_ = self.controller.view
     }
     
     override func tearDown() {
+        super.tearDown()
     }
     
-    func testViewControllerRun() {
-        let expectation = XCTestExpectation(description: "fake weather")
-        self.controller.setUp()
-       
-        DispatchQueue.main.asyncAfter(deadline: .now()+10.00, execute:{
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.00)
-        resultTest()
-    }
-    
-    func testViewControllerError(){
-        self.controller.error(error: WeatherFakeResponseData.WeatherError())
-        XCTAssert(self.controller.mainView?.firstTemperatureView?.temperatureLabel?.text == "error")
+    func test_weatherController_api_called_success() {
+        self.controller.api = MockApiWeatherSuccess()
+        self.controller.viewDidLoad()
         
-    }
-    
-//    func testHelper(){
-//        do{
-//let model = try JSONDecoder().decode(Weather.self, from: WeatherFakeResponseData().weatherCorrectData!)
-//model.imageToWeather()
-//        }catch{}
-//    }
-    
-    
-    //then: He should see the temperature
-    func resultTest(){
-        XCTAssertNotNil(temperatureView.temperatureLabel?.text)
-        XCTAssertNotEqual(0, temperatureView.temperatureLabel?.text?.count ?? 0)
+        let weatherPau = self.controller.weatherPau
+        let weatherNY = self.controller.weatherNY
         
+        let error = self.controller.error
+        XCTAssertNotNil(weatherPau)
+        XCTAssertNotNil(weatherNY)
+        XCTAssertNil(error)
     }
     
+    func test_weatherController_api_called_failure() {
+        self.controller.api = MockApiWeatherFailure()
+        self.controller.viewDidLoad()
+        
+        let weatherPau = self.controller.weatherPau
+        let weatherNY = self.controller.weatherNY
+        XCTAssertNil(weatherPau)
+        XCTAssertNil(weatherNY)
+        
+        let error = self.controller.error!
+        XCTAssertEqual((error as NSError).code, 400)
+        XCTAssertEqual((error as NSError).domain, "domain.com")
+    }
+    
+    /*func test_weather() {
+        let fakeController = FakeWeatherController()
+        fakeController.api = MockApiWeatherFailure()
+        fakeController.viewDidLoad()
+        
+        XCTAssertEqual(fakeController.errorCountCalled, 2)
+    }*/
 }
+
+class MockApiWeatherSuccess: APIWeather {
+    override func run(query: String, success: ((Weather) -> Void)?, failure: ((Error?) -> Void)?) {
+        let data = WeatherFakeResponseData().weatherCorrectData
+        let model = try! JSONDecoder().decode(Weather.self, from: data!)
+        success?(model)
+    }
+}
+
+class MockApiWeatherFailure: APIWeather {
+    override func run(query: String, success: ((Weather) -> Void)?, failure: ((Error?) -> Void)?) {
+        let error = NSError(domain: "domain.com", code: 400, userInfo: nil)
+        failure?(error)
+    }
+}
+
+/*class FakeWeatherController: WeatherViewController {
+    private(set) var errorCountCalled = 0
+    override func error(error: Error?) {
+        self.errorCountCalled += 1
+    }
+}*/

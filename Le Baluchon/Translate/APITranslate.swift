@@ -13,7 +13,7 @@ class APITranslate {
     var session = URLSession(configuration: .default)
     var apiTranslate = APITranslate.shared
     
-    static func run(
+    func run(
         query: String,
         source: String,
         target: String,
@@ -51,7 +51,7 @@ class APITranslate {
     // ***********************************************
     // MARK: - Private Methods
     // ***********************************************
-    static internal func buildRequest(_ query: String, _ source: String, _ target: String) ->URLRequest {
+    internal func buildRequest(_ query: String, _ source: String, _ target: String) ->URLRequest {
         let urlString = "https://translation.googleapis.com/language/translate/v2"
         var urlComponents = URLComponents(string: urlString)!
         

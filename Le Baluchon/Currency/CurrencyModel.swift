@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Currency {
-    struct Rates: Decodable {
+struct Currency: Equatable {
+    struct Rates: Decodable, Equatable {
         let USD: Double
     }
     

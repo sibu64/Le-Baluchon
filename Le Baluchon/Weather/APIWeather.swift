@@ -28,13 +28,12 @@ class APIWeather {
     var session = URLSession(configuration: .default)
     var apiWeather = APIWeather.shared
     
-    
-      func run(
+    func run(
         query: String,
         success: ((Weather)->Void)?,
         failure: ((Error?)->Void)?) {
         
-        let request = APIWeather.buildRequest(query)
+        let request = buildRequest(query)
         session.dataTask(with: request) { data, response, error in
             guard let value = data,
                 let response = response as? HTTPURLResponse,
@@ -63,7 +62,7 @@ class APIWeather {
     // ***********************************************
     // MARK: - Private Methods
     // ***********************************************
-    static internal func buildRequest(_ query: String) ->URLRequest {
+    internal func buildRequest(_ query: String) ->URLRequest {
         let urlString = "https://api.openweathermap.org/data/2.5/weather"
         var urlComponents = URLComponents(string: urlString)!
         

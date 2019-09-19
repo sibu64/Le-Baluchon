@@ -13,6 +13,10 @@ class TranslateController: UIViewController {
     // MARK: - Interface
     // ***********************************************
     @IBOutlet weak var mainView: TranslateView?
+    // Properties
+    var api: APITranslate? = APITranslate()
+    var model: GoogleTranslateResponse?
+    var error: Error?
     // ***********************************************
     // MARK: - Implementation
     // ***********************************************
@@ -27,14 +31,15 @@ class TranslateController: UIViewController {
     // ***********************************************
     private func translate(query: String, from: String, to: String, completion: ((GoogleTranslateResponse)->Void)?) {
         self.mainView?.loader(true)
-        APITranslate.run(query: query, source: from, target: to, success: { model in
+        api?.run(query: query, source: from, target: to, success: { model in
             self.sucess(model: model, completion: completion)
         }, failure: { error in
-            self.error(error: error)
+            self.failure(error: error)
         })
     }
     
     public func setUp(){
+        //= didTranslateCallBack()
         mainView?.didTranslate({ source in
             guard let value = source else { return }
             self.translate(query: value, from: "fr", to: "en", completion: { model in
@@ -45,11 +50,13 @@ class TranslateController: UIViewController {
     }
     
     public func sucess(model: GoogleTranslateResponse,completion: ((GoogleTranslateResponse)->Void)?){
+        self.model = model
         self.mainView?.loader(false)
         completion?(model)
     }
     
-    public func error(error: Error?){
+    public func failure(error: Error?){
+        self.error = error
         self.mainView?.loader(false)
         self.mainView?.targetLabel?.text = "error"
         guard let err = error else { return }

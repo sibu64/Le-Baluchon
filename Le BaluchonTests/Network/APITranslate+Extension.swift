@@ -7,21 +7,22 @@
 //
 
 import Foundation
+@testable import Le_Baluchon
 
 extension APITranslate {
     
     func getFakeTranslate(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
         apiTranslate = APITranslate()
-        let request = APITranslate.buildRequest("","","")
+        let request = APITranslate().buildRequest("","","")
         let weatherFakeData = TranslateFakeResponseData()
-        apiTranslate?.session = URLSessionFake(data: weatherFakeData.weatherCorrectData, response: weatherFakeData.responseOK, error: nil)
+        apiTranslate?.session = URLSessionFake(data: weatherFakeData.translateCorrectData, response: weatherFakeData.responseOK, error: nil)
         let task = apiTranslate?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }
     
     func getFakeTranslateError(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
         apiTranslate = APITranslate()
-        let request = APITranslate.buildRequest("","","")
+        let request = APITranslate().buildRequest("","","")
         let weatherFakeData = TranslateFakeResponseData()
         apiTranslate?.session = URLSessionFake(data: nil, response: nil, error: weatherFakeData.error)
         let task = apiTranslate?.session.dataTask(with: request, completionHandler: completionHandler)
@@ -30,7 +31,7 @@ extension APITranslate {
     
     func getFakeTranslateNoData(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
         apiTranslate = APITranslate()
-        let request = APITranslate.buildRequest("","","")
+        let request = APITranslate().buildRequest("","","")
         apiTranslate?.session = URLSessionFake(data: nil, response: nil, error: nil)
         let task = apiTranslate?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
@@ -38,9 +39,9 @@ extension APITranslate {
     
     func getFakeTranslateIncorrectData(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
         apiTranslate = APITranslate()
-        let request = APITranslate.buildRequest("","","")
+        let request = APITranslate().buildRequest("","","")
         let weatherFakeData = TranslateFakeResponseData()
-        apiTranslate?.session = URLSessionFake(data: weatherFakeData.weatherCorrectData, response: weatherFakeData.responseKO, error: nil)
+        apiTranslate?.session = URLSessionFake(data: weatherFakeData.translateCorrectData, response: weatherFakeData.responseKO, error: nil)
         let task = apiTranslate?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }

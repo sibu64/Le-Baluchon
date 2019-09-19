@@ -15,6 +15,7 @@ class CurrencyViewController: UIViewController {
     @IBOutlet weak var mainView: CurrencyView?
     // Properties
     var fetcher = FetchCurrencyAPI()
+    var api: APICurrency = APICurrency()
     // ***********************************************
     // MARK: - Implementation
     // ***********************************************
@@ -27,7 +28,7 @@ class CurrencyViewController: UIViewController {
     // ***********************************************
     private func load() {
         mainView?.loader(true)
-        APICurrency.run(success: { model in
+        api.run(success: { model in
            self.success(model: model)
         }) { error in
           self.error(error: error)
