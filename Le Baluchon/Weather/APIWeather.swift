@@ -8,19 +8,6 @@
 
 import Foundation
 
-//public struct Weather: Decodable {
-//    public struct Main: Decodable {
-//        public let temp: Double
-//    }
-//
-//    public struct WeatherValue: Decodable {
-//        public let id: Int
-//    }
-//
-//    public let main: Main
-//    public let weather: [WeatherValue]
-//}
-
 class APIWeather {
     
     static let shared: APIWeather? = nil
@@ -39,21 +26,15 @@ class APIWeather {
                 let response = response as? HTTPURLResponse,
                 (200 ..< 300) ~= response.statusCode,
                 error == nil else {
-                    OperationQueue.main.addOperation {
-                        failure?(error)
-                    }
+                    self.queue { failure?(error) }
                     return
             }
             
             do {
                 let model = try JSONDecoder().decode(Weather.self, from: value)
-                OperationQueue.main.addOperation {
-                    success?(model)
-                }
+                self.queue { success?(model) }
             } catch let err {
-                OperationQueue.main.addOperation {
-                    failure?(err)
-                }
+                self.queue { failure?(err) }
             }
             
             }.resume()
@@ -78,4 +59,9 @@ class APIWeather {
     }
 }
 
+extension APIWeather {
+    func queue(completion: @escaping ()->Void) {
+        Thread.isMainThread ? completion() : DispatchQueue.main.async(execute: completion)
+    }
+}
 

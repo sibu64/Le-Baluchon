@@ -12,14 +12,9 @@ import XCTest
 
 class WeatherViewControllerTests: XCTestCase {
     
-    var controller: WeatherViewController!
-    
     override func setUp() {
         super.setUp()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController: WeatherViewController = storyboard.instantiateViewController(withIdentifier: "weatherViewController") as! WeatherViewController
-        self.controller = viewController
-        //_ = self.controller.view
+       
     }
     
     override func tearDown() {
@@ -27,46 +22,48 @@ class WeatherViewControllerTests: XCTestCase {
     }
     
     func test_weatherController_api_called_success() {
-        self.controller.api = MockApiWeatherSuccess()
-        self.controller.viewDidLoad()
+        let controller = WeatherViewControllerSuccess()
+        controller.api = MockApiWeatherSuccess()
         
-        let weatherPau = self.controller.weatherPau
-        let weatherNY = self.controller.weatherNY
+        controller.viewDidLoad()
         
-        let error = self.controller.error
-        XCTAssertNotNil(weatherPau)
-        XCTAssertNotNil(weatherNY)
-        XCTAssertNil(error)
+        XCTAssertEqual(controller.modelNY, Weather.fake)
+        XCTAssertEqual(controller.modelPau, Weather.fake)
     }
     
     func test_weatherController_api_called_failure() {
-        self.controller.api = MockApiWeatherFailure()
-        self.controller.viewDidLoad()
+        let controller = WeatherViewControllerFailure()
+        controller.api = MockApiWeatherFailure()
         
-        let weatherPau = self.controller.weatherPau
-        let weatherNY = self.controller.weatherNY
-        XCTAssertNil(weatherPau)
-        XCTAssertNil(weatherNY)
+        controller.viewDidLoad()
         
-        let error = self.controller.error!
-        XCTAssertEqual((error as NSError).code, 400)
-        XCTAssertEqual((error as NSError).domain, "domain.com")
+        XCTAssertEqual((controller.error! as NSError).domain, "domain.com")
+        XCTAssertEqual((controller.error! as NSError).code, 400)
+    }
+}
+
+class WeatherViewControllerSuccess: WeatherViewController {
+    private(set) var modelNY: Weather?
+    private(set) var modelPau: Weather?
+    override func successNY(model: Weather) {
+        self.modelNY = model
     }
     
-    /*func test_weather() {
-        let fakeController = FakeWeatherController()
-        fakeController.api = MockApiWeatherFailure()
-        fakeController.viewDidLoad()
-        
-        XCTAssertEqual(fakeController.errorCountCalled, 2)
-    }*/
+    override func successPau(model: Weather) {
+        self.modelPau = model
+    }
+}
+
+class WeatherViewControllerFailure: WeatherViewController {
+    private(set) var error: Error?
+    override func error(error: Error?) {
+        self.error = error
+    }
 }
 
 class MockApiWeatherSuccess: APIWeather {
     override func run(query: String, success: ((Weather) -> Void)?, failure: ((Error?) -> Void)?) {
-        let data = WeatherFakeResponseData().weatherCorrectData
-        let model = try! JSONDecoder().decode(Weather.self, from: data!)
-        success?(model)
+        success?(Weather.fake)
     }
 }
 
@@ -76,10 +73,3 @@ class MockApiWeatherFailure: APIWeather {
         failure?(error)
     }
 }
-
-/*class FakeWeatherController: WeatherViewController {
-    private(set) var errorCountCalled = 0
-    override func error(error: Error?) {
-        self.errorCountCalled += 1
-    }
-}*/

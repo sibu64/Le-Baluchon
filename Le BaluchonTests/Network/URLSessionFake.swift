@@ -10,17 +10,17 @@
 import Foundation
 
 class URLSessionFake: URLSession {
-    var data: Foundation.Data?
+    var data: Data?
     var response: URLResponse?
     var error: Error?
     
-    init(data: Foundation.Data?, response: URLResponse?, error: Error?) {
+    init(data: Data?, response: URLResponse?, error: Error?) {
         self.data = data
         self.response = response
         self.error = error
     }
     
-    override func dataTask(with url: URL, completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         let task = URLSessionDataTaskFake()
         task.completionHandler = completionHandler
         task.data = data
@@ -29,7 +29,7 @@ class URLSessionFake: URLSession {
         return task
     }
     
-    override func dataTask(with request: URLRequest, completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         let task = URLSessionDataTaskFake()
         task.completionHandler = completionHandler
         task.data = data
@@ -40,8 +40,8 @@ class URLSessionFake: URLSession {
 }
 
 class URLSessionDataTaskFake: URLSessionDataTask {
-    var completionHandler: ((Foundation.Data?, URLResponse?, Error?) -> Void)?
-    var data: Foundation.Data?
+    var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
+    var data: Data?
     var urlResponse: URLResponse?
     var responseError: Error?
     

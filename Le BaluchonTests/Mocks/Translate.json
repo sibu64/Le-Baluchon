@@ -1,11 +1,10 @@
 {
     "data": {
-    "translations": [
-    {
-        "translatedText": "Hello"
-        
+        "translations": [
+            {
+                "translatedText": "Coucou"
+            }
+        ]
     }
-    ]
-}
 }
 

@@ -12,9 +12,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var mainView: WeatherView?
     
     var api: APIWeather = APIWeather()
-    var weatherPau: Weather?
-    var weatherNY: Weather?
-    var error: Error?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +24,12 @@ class WeatherViewController: UIViewController {
         
         self.mainView?.firstLoader(animated: true)
         self.load(name: "Pau", success: { model in
-            self.weatherPau = model
-            self.mainView?.firstLoader(animated: false)
-            self.mainView?.setFirst(model)
+            self.successPau(model: model)
         })
         
         self.mainView?.secondLoader(animated: true)
         self.load(name: "New York", success: { model in
-            self.weatherNY = model
-            self.mainView?.secondLoader(animated: false)
-            self.mainView?.setSecond(model)
+            self.successNY(model: model)
         })
     }
 
@@ -46,8 +39,17 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    func error(error: Error?){
-        self.error = error
+    public func successNY(model: Weather) {
+        self.mainView?.secondLoader(animated: false)
+        self.mainView?.setSecond(model)
+    }
+    
+    public func successPau(model: Weather) {
+        self.mainView?.firstLoader(animated: false)
+        self.mainView?.setFirst(model)
+    }
+    
+    public func error(error: Error?) {
         self.mainView?.firstLoader(animated: false)
         self.mainView?.secondLoader(animated: false)
         self.mainView?.firstTemperatureView?.temperatureLabel?.text = "error"

@@ -11,25 +11,23 @@ import Foundation
 
 extension APICurrency {
     
-    func getFakeCurrency(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeCurrency(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiCurrency = APICurrency()
         let request = buildRequest()
-        let currencyFakeData = CurrencyFakeResponseData()
-        apiCurrency?.session = URLSessionFake(data: currencyFakeData.currencyCorrectData, response: currencyFakeData.responseOK, error: nil)
+        apiCurrency?.session = URLSessionFake(data: CurrencyFakeResponseData.data, response: CurrencyFakeResponseData.responseOK, error: nil)
         let task = apiCurrency?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }
     
-    func getFakeCurrencyError(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeCurrencyError(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiCurrency = APICurrency()
         let request = buildRequest()
-        let currencyFakeData = CurrencyFakeResponseData()
-        apiCurrency?.session = URLSessionFake(data: nil, response: nil, error: currencyFakeData.error)
+        apiCurrency?.session = URLSessionFake(data: nil, response: nil, error: CurrencyFakeResponseData.error)
         let task = apiCurrency?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }
     
-    func getFakeCurrencyNoData(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeCurrencyNoData(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiCurrency = APICurrency()
         let request = buildRequest()
         apiCurrency?.session = URLSessionFake(data: nil, response: nil, error: nil)
@@ -37,11 +35,10 @@ extension APICurrency {
         task?.resume()
     }
     
-    func getFakeCurrencyIncorrectData(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeCurrencyIncorrectData(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiCurrency = APICurrency()
         let request = buildRequest()
-        let currencyFakeData = CurrencyFakeResponseData()
-        apiCurrency?.session = URLSessionFake(data: currencyFakeData.currencyCorrectData, response: currencyFakeData.responseKO, error: nil)
+        apiCurrency?.session = URLSessionFake(data: CurrencyFakeResponseData.data, response: CurrencyFakeResponseData.responseKO, error: nil)
         let task = apiCurrency?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }

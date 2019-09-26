@@ -65,13 +65,6 @@ class CurrencyViewControllerFailure: CurrencyViewController {
     }
 }
 
-extension Currency {
-    static var fake: Currency {
-        let data = CurrencyFakeResponseData().currencyCorrectData
-        return try! JSONDecoder().decode(Currency.self, from: data!)
-    }
-}
-
 class MockAPICurrencySuccess: APICurrency {
     override func run(success: ((Currency) -> Void)?, failure: ((Error?) -> Void)?) {
         success?(Currency.fake)

@@ -11,25 +11,23 @@ import Foundation
 
 extension APIWeather {
     
-    func getFakeWeather(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeWeather(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiWeather = APIWeather()
         let request = buildRequest("")
-        let weatherFakeData = WeatherFakeResponseData()
-        apiWeather?.session = URLSessionFake(data: weatherFakeData.weatherCorrectData, response: weatherFakeData.responseOK, error: nil)
+        apiWeather?.session = URLSessionFake(data: WeatherFakeResponseData.data, response: WeatherFakeResponseData.responseOK, error: nil)
         let task = apiWeather?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }
     
-    func getFakeWeatherError(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeWeatherError(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiWeather = APIWeather()
         let request = buildRequest("")
-        let weatherFakeData = WeatherFakeResponseData()
-        apiWeather?.session = URLSessionFake(data: nil, response: nil, error: weatherFakeData.error)
+        apiWeather?.session = URLSessionFake(data: nil, response: nil, error: WeatherFakeResponseData.error)
         let task = apiWeather?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }
     
-    func getFakeWeatherNoData(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeWeatherNoData(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiWeather = APIWeather()
         let request = buildRequest("")
         apiWeather?.session = URLSessionFake(data: nil, response: nil, error: nil)
@@ -37,11 +35,10 @@ extension APIWeather {
         task?.resume()
     }
     
-    func getFakeWeatherIncorrectData(completionHandler: @escaping (Foundation.Data?, URLResponse?, Error?) -> Void){
+    func getFakeWeatherIncorrectData(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void){
         apiWeather = APIWeather()
         let request = buildRequest("")
-        let weatherFakeData = WeatherFakeResponseData()
-        apiWeather?.session = URLSessionFake(data: weatherFakeData.weatherCorrectData, response: weatherFakeData.responseKO, error: nil)
+        apiWeather?.session = URLSessionFake(data: WeatherFakeResponseData.data, response: WeatherFakeResponseData.responseKO, error: nil)
         let task = apiWeather?.session.dataTask(with: request, completionHandler: completionHandler)
         task?.resume()
     }

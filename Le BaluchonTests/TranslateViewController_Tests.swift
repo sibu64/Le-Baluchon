@@ -61,7 +61,8 @@ class MockApiTranslateError: APITranslate {
 
 class MockApiTranslateSuccess: APITranslate {
     override func run(query: String, source: String, target: String, success: ((GoogleTranslateResponse) -> Void)?, failure: ((Error?) -> Void)?) {
-        let model = GoogleTranslateResponse(data: nil)
+    
+        let model = TranslateFakeResponseData.model!
         success?(model)
     }
 }

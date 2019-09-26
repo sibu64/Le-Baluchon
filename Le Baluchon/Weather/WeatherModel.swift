@@ -9,12 +9,12 @@
 import Foundation
 
 
-public struct Weather: Decodable {
-    public struct Main: Decodable {
+public struct Weather: Decodable, Equatable {
+    public struct Main: Decodable, Equatable {
         public let temp: Double
     }
     
-    public struct WeatherValue: Decodable {
+    public struct WeatherValue: Decodable, Equatable {
         public let id: Int
     }
     

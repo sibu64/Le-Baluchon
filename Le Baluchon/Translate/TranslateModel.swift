@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct GoogleTranslateResponse: Decodable {
-    public let data: Data?
+struct GoogleTranslateResponse: Decodable, Equatable {
+    public let data: TranslateInfo?
 }
 
-struct Data: Decodable {
+struct TranslateInfo: Decodable, Equatable {
     let translations: [Translation]?
 }
 
-struct Translation: Decodable {
+struct Translation: Decodable, Equatable {
     let translatedText: String
 }

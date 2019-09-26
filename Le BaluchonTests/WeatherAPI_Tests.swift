@@ -18,8 +18,40 @@ class WeatherAPI_Tests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func test_api_weather_call_success() {
+        let http = APIWeather()
+        http.session = URLSessionFake(
+            data: WeatherFakeResponseData.data,
+            response: WeatherFakeResponseData.responseOK,
+            error: nil
+        )
+        
+        var modelResponse: Weather?
+        http.run(query: "q", success: { model in
+            modelResponse = model
+        }, failure: nil)
+        
+        XCTAssertEqual(modelResponse, Weather.fake)
+    }
+    
+    func test_api_weather_call_failure() {
+        let http = APIWeather()
+        http.session = URLSessionFake(
+            data: nil,
+            response: WeatherFakeResponseData.responseKO,
+            error: WeatherFakeResponseData.error
+        )
+        
+        var errorResponse: Error?
+        http.run(query: "q", success: nil) { error in
+            errorResponse = error
+        }
+        
+        XCTAssertEqual(errorResponse?.localizedDescription, "Error")
+    }
 
-    func testGetFakeWeatherData(){
+    /*func testGetFakeWeatherData(){
         let expectation = XCTestExpectation(description: "fake weather")
         let api = APIWeather()
         api.getFakeWeather(completionHandler: { (data, response, error) in
@@ -70,6 +102,6 @@ class WeatherAPI_Tests: XCTestCase {
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 0.01)
-    }
+    }*/
 
 }

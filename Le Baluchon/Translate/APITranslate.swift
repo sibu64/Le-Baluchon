@@ -19,7 +19,6 @@ class APITranslate {
         target: String,
         success: ((GoogleTranslateResponse)->Void)?,
         failure: ((Error?)->Void)?) {
-        let session = URLSession(configuration: .default)
         
         let request = buildRequest(query, source, target)
         session.dataTask(with: request) { data, response, error in
@@ -27,22 +26,15 @@ class APITranslate {
                 let response = response as? HTTPURLResponse,
                 (200 ..< 300) ~= response.statusCode,
                 error == nil else {
-                    OperationQueue.main.addOperation {
-                        failure?(error)
-                    }
+                    self.queue { failure?(error) }
                     return
             }
             
             do {
-                //print(String(data: value, encoding: .utf8))
                 let model = try JSONDecoder().decode(GoogleTranslateResponse.self, from: value)
-                OperationQueue.main.addOperation {
-                    success?(model)
-                }
+                self.queue { success?(model) }
             } catch let err {
-                OperationQueue.main.addOperation {
-                    failure?(err)
-                }
+                self.queue { failure?(err) }
             }
             
         }.resume()
@@ -68,15 +60,8 @@ class APITranslate {
     }
 }
 
-//struct GoogleTranslateResponse: Decodable {
-//    public let data: Data?
-//}
-//
-//struct Data: Decodable {
-//    let translations: [Translation]?
-//}
-//
-//struct Translation: Decodable {
-//    let translatedText: String
-//}
-
+extension APITranslate {
+    func queue(completion: @escaping ()->Void) {
+        Thread.isMainThread ? completion() : DispatchQueue.main.async(execute: completion)
+    }
+}

@@ -8,16 +8,6 @@
 
 import Foundation
 
-//struct Currency {
-//    struct Rates: Decodable {
-//        let USD: Double
-//    }
-//
-//    let base: String
-//    let dateString: String
-//    let rates: Rates?
-//}
-
 extension Currency: Decodable {
     enum CurrencyKeys: String, CodingKey {
         case dateString = "date"
@@ -39,28 +29,21 @@ class APICurrency {
     var apiCurrency = APICurrency.shared
     
     func run(success: ((Currency)->Void)?, failure: ((Error?)->Void)?) {
-        let session = URLSession(configuration: .default)
         let request = buildRequest()
         session.dataTask(with: request) { data, response, error in
             guard let value = data,
                 let response = response as? HTTPURLResponse,
                 (200 ..< 300) ~= response.statusCode,
                 error == nil else {
-                    OperationQueue.main.addOperation {
-                        failure?(error)
-                    }
+                    self.queue { failure?(error) }
                     return
             }
             
             do {
                 let model = try JSONDecoder().decode(Currency.self, from: value)
-                OperationQueue.main.addOperation {
-                    success?(model)
-                }
+                self.queue { success?(model) }
             } catch let err {
-                OperationQueue.main.addOperation {
-                    failure?(err)
-                }
+                self.queue { failure?(err) }
             }
             
             }.resume()
@@ -78,3 +61,8 @@ class APICurrency {
     }
 }
 
+extension APICurrency {
+    func queue(completion: @escaping ()->Void) {
+        Thread.isMainThread ? completion() : DispatchQueue.main.async(execute: completion)
+    }
+}

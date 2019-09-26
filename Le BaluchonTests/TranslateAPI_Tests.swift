@@ -19,7 +19,39 @@ class TranslateAPI_Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testGetFakeTranslateData(){
+    func test_api_translate_call_success() {
+        let http = APITranslate()
+        http.session = URLSessionFake(
+            data: Data.from("Translate"),
+            response: TranslateFakeResponseData.responseOK,
+            error: nil
+        )
+        
+        var modelResponse: GoogleTranslateResponse?
+        http.run(query: "query", source: "fr", target: "fr", success: { model in
+            modelResponse = model
+        }, failure: nil)
+        
+        XCTAssertEqual(modelResponse, GoogleTranslateResponse.fake)
+    }
+
+    func test_api_translate_call_failure() {
+       let http = APITranslate()
+        http.session = URLSessionFake(
+            data: nil,
+            response: TranslateFakeResponseData.responseKO,
+            error: TranslateFakeResponseData.error
+        )
+        
+        var errorResponse: Error?
+        http.run(query: "a", source: "a", target: "a", success: nil) { error in
+            errorResponse = error
+        }
+        
+        XCTAssertEqual(errorResponse?.localizedDescription, "Error")
+    }
+    
+    /*func testGetFakeTranslateData(){
         let expectation = XCTestExpectation(description: "fake translation")
         let api = APITranslate()
         api.getFakeTranslate(completionHandler: { (data, response, error) in
@@ -70,6 +102,6 @@ class TranslateAPI_Tests: XCTestCase {
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 0.01)
-    }
+    }*/
 
 }
