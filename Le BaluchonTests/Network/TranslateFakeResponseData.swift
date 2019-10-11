@@ -58,11 +58,11 @@ class TranslateFakeResponseData {
     
     // MARK: - Response
     static let responseOK = HTTPURLResponse(
-        url: URL(string: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyBuyEIWZs6ErHmbXHcOo9T_UaJxlSPLSbw&q=Bonjour&target=en&source=fr")!,
+        url: URL(string: "https://translation.googleapis.com/language/translate/v2?key="+Constantes.google_api_key+"&q=Bonjour&target=en&source=fr")!,
         statusCode: 200, httpVersion: nil, headerFields: [:])!
     
     static let responseKO = HTTPURLResponse(
-        url: URL(string: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyBuyEIWZs6ErHmbXHcOo9T_UaJxlSPLSbw&q=Bonjour&target=en&source=fr")!,
+        url: URL(string: "https://translation.googleapis.com/language/translate/v2?key="+Constantes.google_api_key+"&q=Bonjour&target=en&source=fr")!,
         statusCode: 500, httpVersion: nil, headerFields: [:])!
     
     

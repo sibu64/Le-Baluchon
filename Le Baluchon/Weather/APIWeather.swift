@@ -10,10 +10,10 @@ import Foundation
 
 class APIWeather {
     
-    static let shared: APIWeather? = nil
+    //static let shared: APIWeather? = nil
     
     var session = URLSession(configuration: .default)
-    var apiWeather = APIWeather.shared
+    //var apiWeather = APIWeather.shared
     
     func run(
         query: String,

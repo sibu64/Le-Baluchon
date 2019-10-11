@@ -40,6 +40,7 @@ class TranslateController: UIViewController {
     
     public func setUp(){
         //= didTranslateCallBack()
+        self.detectNetwork()
         mainView?.didTranslate({ source in
             guard let value = source else { return }
             self.translate(query: value, from: "fr", to: "en", completion: { model in

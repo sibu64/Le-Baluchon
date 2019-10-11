@@ -34,11 +34,11 @@ class CurrencyFakeResponseData {
     
     // MARK: - Response
     static let responseOK = HTTPURLResponse(
-        url: URL(string: "http://data.fixer.io/api/latest?access_key=6d7719c7c18c4bac22c93fae44f9c4b5&base=EUR&symbols=USD")!,
+        url: URL(string: "http://data.fixer.io/api/"+"latest?access_key="+Constantes.fixer_api_key+"&base=EUR&symbols=USD")!,
         statusCode: 200, httpVersion: nil, headerFields: [:])!
     
     static let responseKO = HTTPURLResponse(
-        url: URL(string: "http://data.fixer.io/api/latest?access_key=6d7719c7c18c4bac22c93fae44f9c4b5&base=EUR&symbols=USD")!,
+        url: URL(string: "http://data.fixer.io/api/"+"latest?access_key="+Constantes.fixer_api_key+"&base=EUR&symbols=USD")!,
         statusCode: 500, httpVersion: nil, headerFields: [:])!
     
     

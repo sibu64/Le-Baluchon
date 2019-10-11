@@ -33,11 +33,11 @@ class WeatherFakeResponseData {
     
     // MARK: - Response
      static let responseOK = HTTPURLResponse(
-        url: URL(string: "https://api.openweathermap.org/data/2.5/weather?q=New_York,us&appid=abf6fdfc30264a6ecfc02cd694b725d3")!,
+        url: URL(string: "https://api.openweathermap.org/data/2.5/weather?q=New_York,us&appid="+Constantes.weather_api_key)!,
         statusCode: 200, httpVersion: nil, headerFields: [:])!
     
      static let responseKO = HTTPURLResponse(
-        url: URL(string: "https://api.openweathermap.org/data/2.5/weather?q=New_York,us&appid=abf6fdfc30264a6ecfc02cd694b725d3")!,
+        url: URL(string: "https://api.openweathermap.org/data/2.5/weather?q=New_York,us&appid="+Constantes.weather_api_key)!,
         statusCode: 500, httpVersion: nil, headerFields: [:])!
     
     

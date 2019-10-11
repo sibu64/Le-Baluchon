@@ -36,6 +36,7 @@ class CurrencyViewController: UIViewController {
     }
     
     public func setUp(){
+        self.detectNetwork()
         mainView?.didCurrencyCallback({
             if self.fetcher.shouldFetch() == true {
                 self.load()

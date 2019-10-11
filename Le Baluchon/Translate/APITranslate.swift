@@ -48,7 +48,7 @@ class APITranslate {
         var urlComponents = URLComponents(string: urlString)!
         
         var queryItems = [URLQueryItem]()
-        queryItems.append(URLQueryItem(name: "key", value: "AIzaSyBuyEIWZs6ErHmbXHcOo9T_UaJxlSPLSbw"))
+        queryItems.append(URLQueryItem(name: "key", value: Constantes.google_api_key))
         queryItems.append(URLQueryItem(name: "q", value: query))
         queryItems.append(URLQueryItem(name: "target", value: target))
         queryItems.append(URLQueryItem(name: "source", value: source))
