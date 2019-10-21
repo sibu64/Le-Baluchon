@@ -48,7 +48,7 @@ class APIWeather {
         var urlComponents = URLComponents(string: urlString)!
         
         var queryItems = [URLQueryItem]()
-        queryItems.append(URLQueryItem(name: "appid", value: Constantes.weather_api_key))
+        queryItems.append(URLQueryItem(name: "appid", value: Constants.weather_api_key))
         queryItems.append(URLQueryItem(name: "q", value: query))
         queryItems.append(URLQueryItem(name: "units", value: "metric"))
         urlComponents.queryItems = queryItems

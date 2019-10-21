@@ -16,7 +16,7 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = "USD"
-        formatter.maximumFractionDigits = 6
+        formatter.maximumFractionDigits = 3
         // Returns
         return formatter.string(from: number)
     }

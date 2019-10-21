@@ -53,7 +53,7 @@ class APICurrency {
     // MARK: - Private Methods
     // ***********************************************
     internal func buildRequest() ->URLRequest {
-        let urlString = "http://data.fixer.io/api/"+"latest?access_key="+Constantes.fixer_api_key+"&base=EUR&symbols=USD"
+        let urlString = "http://data.fixer.io/api/"+"latest?access_key="+Constants.fixer_api_key+"&base=EUR&symbols=USD"
         
         var urlRequest = URLRequest(url: URL(string: urlString)!)
         urlRequest.httpMethod = "GET"

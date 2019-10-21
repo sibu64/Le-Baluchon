@@ -13,6 +13,7 @@ class APITranslate {
     var session = URLSession(configuration: .default)
     var apiTranslate = APITranslate.shared
     
+    /// Lauching of the API
     func run(
         query: String,
         source: String,
@@ -48,7 +49,7 @@ class APITranslate {
         var urlComponents = URLComponents(string: urlString)!
         
         var queryItems = [URLQueryItem]()
-        queryItems.append(URLQueryItem(name: "key", value: Constantes.google_api_key))
+        queryItems.append(URLQueryItem(name: "key", value: Constants.google_api_key))
         queryItems.append(URLQueryItem(name: "q", value: query))
         queryItems.append(URLQueryItem(name: "target", value: target))
         queryItems.append(URLQueryItem(name: "source", value: source))

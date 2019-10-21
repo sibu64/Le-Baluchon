@@ -22,12 +22,12 @@
 		69A491E522EA1182003964B9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A491E422EA1182003964B9 /* WeatherView.swift */; };
 		69B3365F22EF5A2600F8B0C6 /* Weather+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3365E22EF5A2600F8B0C6 /* Weather+Helper.swift */; };
 		6E1E03EC22FC76AB00F3C85A /* WeatherFakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E03EB22FC76AB00F3C85A /* WeatherFakeResponseData.swift */; };
-		6E20622E22EDC1320043D73A /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59A6B722D8AD8C00E033B3 /* Constantes.swift */; };
+		6E20622E22EDC1320043D73A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59A6B722D8AD8C00E033B3 /* Constants.swift */; };
 		6E25F67C2309900C00F8A813 /* Currency.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E25F67B2309900C00F8A813 /* Currency.json */; };
 		6E25F67F2309917400F8A813 /* CurrencyFakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25F67D2309917400F8A813 /* CurrencyFakeResponseData.swift */; };
 		6E279801230B2299004F6CBA /* TranslateFakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E279800230B2299004F6CBA /* TranslateFakeResponseData.swift */; };
 		6E279805230B2715004F6CBA /* Translate.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E279804230B2715004F6CBA /* Translate.json */; };
-		6E59A6B822D8AD8C00E033B3 /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59A6B722D8AD8C00E033B3 /* Constantes.swift */; };
+		6E59A6B822D8AD8C00E033B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59A6B722D8AD8C00E033B3 /* Constants.swift */; };
 		6E7175A92320280D00EE64A5 /* CurrencyController_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7175A82320280D00EE64A5 /* CurrencyController_Tests.swift */; };
 		6E7175AB2320368B00EE64A5 /* TranslateViewController_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7175AA2320368B00EE64A5 /* TranslateViewController_Tests.swift */; };
 		6E8842122301A28C0063642B /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8842102301A28C0063642B /* URLSessionFake.swift */; };
@@ -77,8 +77,7 @@
 		6E25F67D2309917400F8A813 /* CurrencyFakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFakeResponseData.swift; sourceTree = "<group>"; };
 		6E279800230B2299004F6CBA /* TranslateFakeResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateFakeResponseData.swift; sourceTree = "<group>"; };
 		6E279804230B2715004F6CBA /* Translate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Translate.json; sourceTree = "<group>"; };
-		6E59A6B722D8AD8C00E033B3 /* Constantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constantes.swift; sourceTree = "<group>"; };
-		6E6BBD1422DB68E200C31FA9 /* iconfinder_OUTLINE_Bussiness_and_Media-04_4041197.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "iconfinder_OUTLINE_Bussiness_and_Media-04_4041197.svg"; sourceTree = "<group>"; };
+		6E59A6B722D8AD8C00E033B3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6E7175A82320280D00EE64A5 /* CurrencyController_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController_Tests.swift; sourceTree = "<group>"; };
 		6E7175AA2320368B00EE64A5 /* TranslateViewController_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController_Tests.swift; sourceTree = "<group>"; };
 		6E8842102301A28C0063642B /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
@@ -122,10 +121,10 @@
 		6911D60C22E75A20001D3A66 /* Translate */ = {
 			isa = PBXGroup;
 			children = (
+				6EC968B222DF502600C22E78 /* APITranslate.swift */,
 				698E162422DCE744007C645E /* TranslateView.swift */,
 				6EA62DE5232641A500A20462 /* TranslateModel.swift */,
 				6EB1EF8022D79AE300954056 /* TranslateController.swift */,
-				6EC968B222DF502600C22E78 /* APITranslate.swift */,
 			);
 			path = Translate;
 			sourceTree = "<group>";
@@ -188,13 +187,12 @@
 			children = (
 				69A491E122EA0E95003964B9 /* Weather */,
 				6EB1EF7E22D79AE300954056 /* AppDelegate.swift */,
-				6E59A6B722D8AD8C00E033B3 /* Constantes.swift */,
+				6E59A6B722D8AD8C00E033B3 /* Constants.swift */,
 				699F4667231595EE003BB0BB /* CheckNetwork.swift */,
 				6EB1EF8222D79AE300954056 /* Main.storyboard */,
 				6911D61022E75A63001D3A66 /* Utilities */,
 				6911D60C22E75A20001D3A66 /* Translate */,
 				6911D60F22E75A3B001D3A66 /* Currency */,
-				6E6BBD1422DB68E200C31FA9 /* iconfinder_OUTLINE_Bussiness_and_Media-04_4041197.svg */,
 				6EB1EF8722D79AE500954056 /* LaunchScreen.storyboard */,
 				6EB1EF8A22D79AE500954056 /* Info.plist */,
 			);
@@ -343,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E59A6B822D8AD8C00E033B3 /* Constantes.swift in Sources */,
+				6E59A6B822D8AD8C00E033B3 /* Constants.swift in Sources */,
 				6911D61222E75BF0001D3A66 /* CurrencyView.swift in Sources */,
 				6EE3518022E88321008AFE5D /* APIWeather.swift in Sources */,
 				699F4668231595EE003BB0BB /* CheckNetwork.swift in Sources */,
@@ -379,7 +377,7 @@
 				6E7175AB2320368B00EE64A5 /* TranslateViewController_Tests.swift in Sources */,
 				698AFEE7231D7A17002688E7 /* WeatherAPI_Tests.swift in Sources */,
 				6E8842122301A28C0063642B /* URLSessionFake.swift in Sources */,
-				6E20622E22EDC1320043D73A /* Constantes.swift in Sources */,
+				6E20622E22EDC1320043D73A /* Constants.swift in Sources */,
 				698AFEEB231D7A97002688E7 /* TranslateAPI_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -520,7 +518,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -22,10 +22,18 @@ class CurrencyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CurrencyViewController.tapFunction))
+        mainView?.euroSum?.isUserInteractionEnabled = true
+        mainView?.euroSum?.addGestureRecognizer(tap)
     }
     // ***********************************************
     // MARK: - Private Methods
     // ***********************************************
+    @IBAction func tapFunction(sender: UITapGestureRecognizer) {
+    }
+    
+    
+    
     private func load() {
         mainView?.loader(true)
         api.run(success: { model in
@@ -61,5 +69,6 @@ class CurrencyViewController: UIViewController {
             cancelButtonTitle: "Ok"
         )
     }
+    
 }
 
