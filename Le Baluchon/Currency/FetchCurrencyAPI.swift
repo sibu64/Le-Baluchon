@@ -14,7 +14,7 @@ class FetchCurrencyAPI {
             return true
         }
 
-        if let hour = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour {
+        if Calendar.current.dateComponents([.hour], from: date, to: Date()).hour != nil {
         return true
     }
         return false
